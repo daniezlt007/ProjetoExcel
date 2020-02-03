@@ -9,7 +9,6 @@ import com.delta.produto.Produto;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,10 +19,8 @@ import jxl.Cell;
 import jxl.Sheet;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
-import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
@@ -44,7 +41,7 @@ public class Util {
                 String as1 = a1.getContents();
                 String as2 = a2.getContents();
                 String as3 = a3.getContents();
-                ms += ":::" + as1 + ":" + as2 + "::::::" + as3 + "::\n";
+                ms += "::" + as1 + ":" + as2 + "::::::" + as3 + "::\n";
                 gerarTxt(ms, urlSalvar);
             }
     }
@@ -63,7 +60,7 @@ public class Util {
                 String as3 = a3.getContents();
                 String as4 = a4.getContents();
                 String as5 = a5.getContents();
-                ms += ":::" + as1 + ":" + as2 + ":::" + as4 + "::" + as5 + ":" + as3 + "::\n";
+                ms += "::" + as1 + ":" + as2 + ":::" + as4 + "::" + as5 + ":" + as3 + "::\n";
                 gerarTxt(ms, urlSalvar);
             }
     }
@@ -118,7 +115,7 @@ public class Util {
             String as1 = a1.getContents();
             String as2 = a2.getContents();
             String as3 = a3.getContents();
-            ms += ":::" + as1 + ":" + as2 + "::::::" + as3 + "::\n";
+            ms += "::" + as1 + ":" + as2 + "::::::" + as3 + "::\n";
             gerarTxt(ms, urlTxt);
         }
         wb.cloneSheet(lin);
@@ -164,7 +161,7 @@ public class Util {
                 listaProdutos.add(call);
             }
             for (Produto produto : listaProdutos) {
-                msg += ":::" + produto.getCodigo() + ":" + produto.getDescricao() + "::::::" + produto.getValor() + "::\n";
+                msg += "::" + produto.getCodigo() + ":" + produto.getDescricao() + "::::::" + produto.getValor() + "::\n";
                 gerarTxt(msg, urlSalvar);
             }
             JOptionPane.showMessageDialog(null, "Arquivo gerado com sucesso!");
