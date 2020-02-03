@@ -5,6 +5,9 @@
  */
 package com.delta.produto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author 01332
@@ -14,17 +17,29 @@ public class Produto {
     private String codigo;
     private String descricao;
     private String valor;
+    private String ncm;
+    private String peso;
+    
+    private List<Produto> listaProdutos = new ArrayList<>();
 
     public Produto() {
     
     }
-
+    
     public Produto(String codigo, String descricao, String valor) {
         this.codigo = codigo;
         this.descricao = descricao;
         this.valor = valor;
     }
 
+    public Produto(String codigo, String descricao, String valor, String ncm, String peso) {
+        this.codigo = codigo;
+        this.descricao = descricao;
+        this.valor = valor;
+        this.ncm = ncm;
+        this.peso = peso;
+    }
+    
     public String getCodigo() {
         return codigo;
     }
@@ -49,6 +64,28 @@ public class Produto {
         this.valor = valor;
     }
     
+    public String getNcm() {
+        return ncm;
+    }
+
+    public void setNcm(String ncm) {
+        this.ncm = ncm;
+    }
+
+    public String getPeso() {
+        return peso;
+    }
+
+    public void setPeso(String peso) {
+        this.peso = peso;
+    }
     
+    public List<Produto> getListaProdutos() {
+        return listaProdutos;
+    }
     
+    public void setListaProdutos(List<Produto> listaChamados) {
+        this.listaProdutos = listaChamados;
+    }    
+
 }
