@@ -7,6 +7,7 @@ package com.delta.produto;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.poi.xssf.usermodel.XSSFCell;
 
 /**
  *
@@ -88,4 +89,11 @@ public class Produto {
         this.listaProdutos = listaChamados;
     }    
 
+    @Override
+    public String toString() {
+        return "Produto{" + "codigo=" + codigo + ", descricao=" + descricao + ", valor=" + valor + '}';
+    }
+
+   
+    
 }

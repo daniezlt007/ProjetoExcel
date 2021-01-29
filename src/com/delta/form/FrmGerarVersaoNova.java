@@ -6,6 +6,7 @@
 package com.delta.form;
 
 import com.delta.util.Util;
+import com.delta.util.UtilNovaVersao;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -18,12 +19,12 @@ import jxl.read.biff.BiffException;
  *
  * @author 01332
  */
-public class FrmGerar extends javax.swing.JFrame {
+public class FrmGerarVersaoNova extends javax.swing.JFrame {
 
     /**
      * Creates new form FrmGerar
      */
-    public FrmGerar() {
+    public FrmGerarVersaoNova() {
         initComponents();
     }
 
@@ -80,16 +81,16 @@ public class FrmGerar extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Gerador de Arquivo para importação - (Separador \"|\")");
+        jLabel1.setText("Gerador de Arquivo para importação - (Separador \";\")");
 
         buttonGroup1.add(jRadioButton3Colunas);
-        jRadioButton3Colunas.setText("3 Colunas");
+        jRadioButton3Colunas.setText("3 Colunas - (Codigo, Descricao, Peso)");
 
         buttonGroup1.add(jRadioButton5Colunas);
         jRadioButton5Colunas.setText("5 Colunas");
 
         buttonGroup1.add(jRadioButton2Colunas);
-        jRadioButton2Colunas.setText("2 Colunas");
+        jRadioButton2Colunas.setText("3 Colunas - (Codigo, Ncm, Peso)");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -100,26 +101,27 @@ public class FrmGerar extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(113, 113, 113)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 206, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jRadioButton3Colunas)
-                                    .addComponent(jRadioButton5Colunas))
-                                .addGap(65, 65, 65)
-                                .addComponent(jButton3))
+                            .addComponent(jRadioButton3Colunas)
+                            .addComponent(jRadioButton5Colunas)
                             .addComponent(jRadioButton2Colunas)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabelArquivoSalvar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1))
+                        .addGap(385, 457, Short.MAX_VALUE)
+                        .addComponent(jButton3))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabelPastaAserSalva)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)))
+                        .addGap(113, 113, 113)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabelArquivoSalvar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton1))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabelPastaAserSalva)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton2)))))
                 .addGap(132, 132, 132))
         );
         jPanel1Layout.setVerticalGroup(
@@ -135,16 +137,15 @@ public class FrmGerar extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelPastaAserSalva)
                     .addComponent(jButton2))
-                .addGap(7, 7, 7)
+                .addGap(18, 18, 18)
                 .addComponent(jRadioButton2Colunas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton3)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jRadioButton3Colunas)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jRadioButton5Colunas)))
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addComponent(jRadioButton3Colunas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jRadioButton5Colunas)
+                .addGap(18, 18, 18)
+                .addComponent(jButton3)
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -201,29 +202,29 @@ public class FrmGerar extends javax.swing.JFrame {
             } else {
                 if (arquivoLeitura.endsWith(".xls")) {
                     if (jRadioButton2Colunas.isSelected()) {
-                        Util.lerArquivoXLS(Util.config.getUrlArquivo(), Util.config.getUrlSalvar(), 2);
+                        UtilNovaVersao.lerArquivoXLS(Util.config.getUrlArquivo(), Util.config.getUrlSalvar(), 2);
                     }
                     if (jRadioButton3Colunas.isSelected()) {
-                        Util.lerArquivoXLS(Util.config.getUrlArquivo(), Util.config.getUrlSalvar(), 3);
+                        UtilNovaVersao.lerArquivoXLS(Util.config.getUrlArquivo(), Util.config.getUrlSalvar(), 3);
                     }
                     if (jRadioButton5Colunas.isSelected()) {
-                        Util.lerArquivoXLS(Util.config.getUrlArquivo(), Util.config.getUrlSalvar(), 5);
+                        UtilNovaVersao.lerArquivoXLS(Util.config.getUrlArquivo(), Util.config.getUrlSalvar(), 5);
                     }
                 } else {
                     if (jRadioButton2Colunas.isSelected()) {
                         File arquivoChamados = new File(arquivoLeitura);
                         BufferedInputStream bufProdutos = new BufferedInputStream(new FileInputStream(arquivoChamados));
-                        Util.lerArquivoXLXS2Colunas(bufProdutos, arquivoSalvar);
+                        UtilNovaVersao.lerArquivoXLXS3Colunas(bufProdutos, arquivoSalvar,1);
                     }
                     if (jRadioButton3Colunas.isSelected()) {
                         File arquivoChamados = new File(arquivoLeitura);
                         BufferedInputStream bufProdutos = new BufferedInputStream(new FileInputStream(arquivoChamados));
-                        Util.lerArquivoXLXS3Colunas(bufProdutos, arquivoSalvar);
+                        UtilNovaVersao.lerArquivoXLXS3Colunas(bufProdutos, arquivoSalvar,2);
                     }
                     if (jRadioButton5Colunas.isSelected()) {
                         File arquivoChamados = new File(arquivoLeitura);
                         BufferedInputStream bufProdutos = new BufferedInputStream(new FileInputStream(arquivoChamados));
-                        Util.lerArquivoXLXS5Colunas(bufProdutos, arquivoSalvar);
+                        UtilNovaVersao.lerArquivoXLXS5Colunas(bufProdutos, arquivoSalvar);
                     }
                 }
             }
@@ -264,20 +265,21 @@ public class FrmGerar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmGerar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmGerarVersaoNova.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmGerar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmGerarVersaoNova.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmGerar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmGerarVersaoNova.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmGerar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmGerarVersaoNova.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                FrmGerar frm = new FrmGerar();
+                FrmGerarVersaoNova frm = new FrmGerarVersaoNova();
                 frm.setVisible(true);
                 frm.setLocationRelativeTo(null);
                 frm.setExtendedState(MAXIMIZED_BOTH);

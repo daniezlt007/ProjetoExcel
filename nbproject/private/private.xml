@@ -2,6 +2,12 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/Logos/Documents/NetBeansProjects/ProjetoExcel/src/com/delta/produto/Produto.java</file>
+            <file>file:/D:/Logos/Documents/NetBeansProjects/ProjetoExcel/src/com/delta/form/FrmGerar.java</file>
+            <file>file:/D:/Logos/Documents/NetBeansProjects/ProjetoExcel/src/com/delta/util/Util.java</file>
+            <file>file:/D:/Logos/Documents/NetBeansProjects/ProjetoExcel/src/com/delta/util/Teste.java</file>
+            <file>file:/D:/Logos/Documents/NetBeansProjects/ProjetoExcel/src/com/delta/util/UtilNovaVersao.java</file>
+        </group>
     </open-files>
 </project-private>
